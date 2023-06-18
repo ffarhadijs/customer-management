@@ -27,7 +27,7 @@ export default async function handler(
     });
   }
   try {
-    const customer = await Customer.create();
+    const customer = await Customer.create(formData);
     return res.status(201).json({
       status: "Success",
       message: "Customer created successfully",
