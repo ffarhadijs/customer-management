@@ -9,5 +9,7 @@ export type UserType = {
     quantity: number;
     productName: string;
   }[];
-  _id:string
+  _id: string|null;
+  createdAt: string|null;
+  updatedAt: string|null;
 };
