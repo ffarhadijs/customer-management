@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 
 function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useRouter();
-
+  console.log(pathname, "pathname");
   return (
     <Container size={"lg"}>
       <Group position="apart" my={25}>
@@ -13,12 +13,22 @@ function Layout({ children }: { children: ReactNode }) {
           {" "}
           Customer Management System
         </Text>
-        <Link
-          href={pathname === "/add-customer" ? "/" : "/add-customer"}
-          className="bg-green-500 p-3 rounded-lg font-bold hover:bg-green-600 hover:transition-colors hover:duration-500 duration-500"
-        >
-          {pathname === "/add-customer" ? "Home" : "Add Customer"}
-        </Link>
+        <Box>
+          {pathname === "/customer/[customerId]" && (
+            <Link
+              href="/"
+              className="bg-green-500 p-3 mx-3 rounded-lg font-bold hover:bg-green-600 hover:transition-colors hover:duration-500 duration-500"
+            >
+              Home
+            </Link>
+          )}
+          <Link
+            href={pathname === "/add-customer" ? "/" : "/add-customer"}
+            className="bg-green-500 p-3 rounded-lg font-bold hover:bg-green-600 hover:transition-colors hover:duration-500 duration-500"
+          >
+            {pathname === "/add-customer" ? "Home" : "Add Customer"}
+          </Link>
+        </Box>
       </Group>
       <Box mih={"75vh"}>{children}</Box>
       <Box className="bg-[#414459] p-5 rounded-lg my-4">
