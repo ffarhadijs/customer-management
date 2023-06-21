@@ -1,8 +1,11 @@
 import { Box, Center, Container, Group, Text } from "@mantine/core";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { ReactNode } from "react";
 
 function Layout({ children }: { children: ReactNode }) {
+  const { pathname } = useRouter();
+
   return (
     <Container size={"lg"}>
       <Group position="apart" my={25}>
@@ -11,10 +14,10 @@ function Layout({ children }: { children: ReactNode }) {
           Customer Management System
         </Text>
         <Link
-          href="/add-customer"
+          href={pathname === "/add-customer" ? "/" : "/add-customer"}
           className="bg-green-500 p-3 rounded-lg font-bold hover:bg-green-600 hover:transition-colors hover:duration-500 duration-500"
         >
-          Add Customer
+          {pathname === "/add-customer" ? "Home" : "Add Customer"}
         </Link>
       </Group>
       <Box mih={"75vh"}>{children}</Box>
