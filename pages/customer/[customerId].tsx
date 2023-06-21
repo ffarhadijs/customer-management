@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Text } from "@mantine/core";
+import { Box, Center, Flex, Grid, Loader, Text } from "@mantine/core";
 import { useRouter } from "next/router";
 import React from "react";
 import { useEffect, useState } from "react";
@@ -69,18 +69,41 @@ const CustomerDetails = () => {
             </Text>
           </Grid.Col>{" "}
           <Grid.Col span={12}>
-            <Text>
+            <Text fw={600}>
               Products:{" "}
               {customer?.data.products?.map((item) => (
-                <Grid my="md" ml={"80px"} className="bg-[#5e627e] rounded-lg p-2">
+                <Grid
+                  my="md"
+                  ml={"80px"}
+                  className="bg-[#5e627e] rounded-lg p-2"
+                >
                   <Grid.Col xs={6} sm={4}>
-                    <Text>Product Name: {item.productName}</Text>
+                    <Text>
+                      Product Name:{" "}
+                      <Text component="span" fw={400}>
+                        {" "}
+                        {item.productName}{" "}
+                      </Text>{" "}
+                    </Text>
                   </Grid.Col>
                   <Grid.Col xs={3} sm={4}>
-                    <Text>Price: $ {item.price}</Text>
+                    <Text>
+                      {" "}
+                      Price: ${" "}
+                      <Text component="span" fw={400}>
+                        {" "}
+                        {item.price}
+                      </Text>
+                    </Text>
                   </Grid.Col>
                   <Grid.Col xs={3} sm={4}>
-                    <Text>Quantity: {item.quantity}</Text>
+                    <Text>
+                      Quantity:{" "}
+                      <Text component="span" fw={400}>
+                        {" "}
+                        {item.quantity}
+                      </Text>{" "}
+                    </Text>
                   </Grid.Col>
                 </Grid>
               ))}
@@ -88,7 +111,9 @@ const CustomerDetails = () => {
           </Grid.Col>
         </Grid>
       ) : (
-        <Text c={"green"}>loading...</Text>
+        <Center>
+          <Loader />
+        </Center>
       )}
     </Box>
   );
